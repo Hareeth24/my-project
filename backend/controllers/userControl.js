@@ -2,7 +2,7 @@ import TryCatch from "../utils/Trycatch.js";
 import { User } from "../models/userModel.js";
 import getDataUrl from "../utils/urlGenerator.js";
 import cloudinary from "cloudinary";
-import bcrypt from "bcrypt.js";
+import bcrypt from "bcrypt";
 
 export const myProfile = TryCatch(async (req, res) => {
   const user = await User.findById(req.user._id).select("-password");
