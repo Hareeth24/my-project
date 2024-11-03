@@ -1,0 +1,78 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { AiOutlineHome, AiFillHome } from "react-icons/ai";
+import { BsCameraReelsFill, BsCameraReels } from "react-icons/bs";
+import { IoSearchCircleOutline, IoSearchCircle } from "react-icons/io5";
+import {
+  IoChatbubbleEllipses,
+  IoChatbubbleEllipsesOutline,
+} from "react-icons/io5";
+import { RiAccountCircleFill, RiAccountCircleLine } from "react-icons/ri";
+
+const NavigationBar = () => {
+  const [tab, setTab] = useState(window.location.pathname);
+  return (
+    <div
+      className="fixed bottom-0 w-full py-3"
+      style={{
+        background: 'linear-gradient(to right, #740938, #AF1740)',
+      }}
+    >
+      <div className="flex justify-around">
+        <Link
+          to={"/"}
+          onClick={() => setTab("/")}
+          className="flex flex-col items-center text-2xl text-white"
+        >
+          <span>{tab === "/" ? <AiFillHome /> : <AiOutlineHome />}</span>
+        </Link>
+        <Link
+          to={"/reels"}
+          onClick={() => setTab("/reels")}
+          className="flex flex-col items-center text-2xl text-white"
+        >
+          <span>
+            {tab === "/reels" ? <BsCameraReelsFill /> : <BsCameraReels />}
+          </span>
+        </Link>
+        <Link
+          onClick={() => setTab("/search")}
+          to={"/search"}
+          className="flex flex-col items-center text-2xl text-white"
+        >
+          <span>
+            {tab === "/search" ? <IoSearchCircle /> : <IoSearchCircleOutline />}
+          </span>
+        </Link>
+        <Link
+          onClick={() => setTab("/chat")}
+          to={"/chat"}
+          className="flex flex-col items-center text-2xl text-white"
+        >
+          <span>
+            {tab === "/chat" ? (
+              <IoChatbubbleEllipses />
+            ) : (
+              <IoChatbubbleEllipsesOutline />
+            )}
+          </span>
+        </Link>
+        <Link
+          onClick={() => setTab("/account")}
+          to={"/account"}
+          className="flex flex-col items-center text-2xl text-white"
+        >
+          <span>
+            {tab === "/account" ? (
+              <RiAccountCircleFill />
+            ) : (
+              <RiAccountCircleLine />
+            )}
+          </span>
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default NavigationBar;
